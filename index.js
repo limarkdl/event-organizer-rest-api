@@ -32,6 +32,10 @@ app.use(`${API_BASE}/event`, EventRouter)
 app.use(`${API_BASE}/eventType`, EventTypeRouter)
 app.use(`${API_BASE}/reservation`, ReservationRouter)
 
+app.use((req, res) => {
+    res.render('404');
+});
+
 app.listen(3000, () => {
         console.log("Server is running on port 3000");
     }
