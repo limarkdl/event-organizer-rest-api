@@ -5,6 +5,7 @@ import EventRouter from "./api/routes/EventRouter.js";
 import OrganizerRouter from "./api/routes/OrganizerRouter.js";
 import EventTypeRouter from "./api/routes/EventTypeRouter.js";
 import ReservationRouter from "./api/routes/ReservationRouter.js";
+import logger from "./utils/logger/logger.js";
 
 const app = express();
 const API_BASE = '/api'
@@ -14,6 +15,19 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+app.use((req, res, next) => {
+    res.handleError = (error, statusCode = 500, message = 'An error occurred') => {
+        logger.error({
+            message: error.message || 'An error occurred',
+            stack: error.stack || 'No stack trace',
+            context: error.context || {},
+        });
+
+        res.status(statusCode).send(message);
+    };
+
+    next();
+});
 
 app.get("/", (req, res) => {
     res.render('index');
