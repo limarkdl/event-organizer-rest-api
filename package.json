@@ -1,0 +1,17 @@
+{
+  "name": "event-organizer-rest-api",
+  "version": "0.0.1",
+  "private": false,
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^5.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
