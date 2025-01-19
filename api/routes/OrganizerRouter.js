@@ -1,4 +1,5 @@
 import express from "express";
+import OrganizerController from "../controllers/OrganizerController.js";
 
 const OrganizerRouter = new express.Router();
 

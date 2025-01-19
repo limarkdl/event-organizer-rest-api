@@ -1,6 +1,8 @@
 class EventTypeController {
-    async getAllEventTypes(req, res) {}
+    static async getAllEventTypes(req, res) {}
 
-    async createEventType(req, res) {}
-    async deleteEventType(req, res) {}
+    static async createEventType(req, res) {}
+    static async deleteEventType(req, res) {}
 }
+
+export default EventTypeController

@@ -7,14 +7,6 @@ export const Reservation = sequelize.define('Reservation', {
         primaryKey: true,
         autoIncrement: true
     },
-    eventId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
 });
 
 console.log(Reservation === sequelize.models.Reservation);

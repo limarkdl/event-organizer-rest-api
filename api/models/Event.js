@@ -7,14 +7,6 @@ export const Event = sequelize.define('Event', {
         primaryKey: true,
         autoIncrement: true
     },
-    eventTypeId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
-    organizerId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
     name: {
         type: DataTypes.STRING,
         allowNull: false,

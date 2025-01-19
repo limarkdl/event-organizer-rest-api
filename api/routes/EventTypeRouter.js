@@ -1,4 +1,5 @@
 import express from "express";
+import EventTypeController from "../controllers/EventTypeController.js";
 
 const EventTypeRouter = new express.Router();
 

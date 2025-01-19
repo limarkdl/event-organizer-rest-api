@@ -1,6 +1,8 @@
 class OrganizerController {
-    async getAllOrganizers(req, res) {}
+    static async getAllOrganizers(req, res) {}
 
-    async createOrganizer(req, res) {}
-    async deleteOrganizer(req, res) {}
+    static async createOrganizer(req, res) {}
+    static async deleteOrganizer(req, res) {}
 }
+
+export default OrganizerController

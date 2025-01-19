@@ -1,7 +1,9 @@
 class ReservationController {
-    async getAllReservations(req, res) {}
+    static async getAllReservations(req, res) {}
 
-    async createReservation(req, res) {}
-    async getReservation(req, res) {}
-    async deleteReservation(req, res) {}
+    static async createReservation(req, res) {}
+    static async getReservation(req, res) {}
+    static async deleteReservation(req, res) {}
 }
+
+export default ReservationController
