@@ -1,13 +1,13 @@
-import {createLogger, format, transports} from 'winston';
+import {createLogger, format, transports} from 'winston'
 
 const customFormat = format.combine(
     format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
     format.printf(({timestamp, level, message, stack}) => {
         return stack
             ? `${timestamp} [${level.toUpperCase()}]: ${message}\n${stack}`
-            : `${timestamp} [${level.toUpperCase()}]: ${message}`;
+            : `${timestamp} [${level.toUpperCase()}]: ${message}`
     })
-);
+)
 
 /**
  * Logger for storing exception events and extra info. Useful for debugging.
@@ -31,6 +31,6 @@ const logger = createLogger({
     rejectionHandlers: [
         new transports.File({filename: 'logs/rejections.log'})
     ]
-});
+})
 
-export default logger;
+export default logger

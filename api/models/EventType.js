@@ -1,5 +1,5 @@
-import sequelize from "../sequelize.config.js";
-import {DataTypes} from "sequelize";
+import sequelize from "../sequelize.config.js"
+import {DataTypes} from "sequelize"
 
 export const EventType = sequelize.define('EventType', {
     id: {
@@ -11,8 +11,8 @@ export const EventType = sequelize.define('EventType', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-});
+})
 
-console.log(EventType === sequelize.models.EventType);
+console.log(EventType === sequelize.models.EventType)
 
-export default EventType;
+export default EventType

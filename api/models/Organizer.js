@@ -1,5 +1,5 @@
-import sequelize from "../sequelize.config.js";
-import {DataTypes} from "sequelize";
+import sequelize from "../sequelize.config.js"
+import {DataTypes} from "sequelize"
 
 export const Organizer = sequelize.define('Organizer', {
     id: {
@@ -11,8 +11,8 @@ export const Organizer = sequelize.define('Organizer', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-});
+})
 
-console.log(Organizer === sequelize.models.Organizer);
+console.log(Organizer === sequelize.models.Organizer)
 
-export default Organizer;
+export default Organizer

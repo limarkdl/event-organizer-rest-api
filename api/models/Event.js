@@ -1,5 +1,5 @@
-import sequelize from "../sequelize.config.js";
-import {DataTypes} from "sequelize";
+import sequelize from "../sequelize.config.js"
+import {DataTypes} from "sequelize"
 
 export const Event = sequelize.define('Event', {
     id: {
@@ -31,8 +31,8 @@ export const Event = sequelize.define('Event', {
         type: DataTypes.INTEGER,
         allowNull: false,
     }
-});
+})
 
-console.log(Event === sequelize.models.Event);
+console.log(Event === sequelize.models.Event)
 
-export default Event;
+export default Event

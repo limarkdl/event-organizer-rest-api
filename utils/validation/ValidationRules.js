@@ -1,4 +1,4 @@
-import Joi from 'joi';
+import Joi from 'joi'
 
 export const userValidationSchema = Joi.object({
     username: Joi.string()
@@ -26,7 +26,7 @@ export const userValidationSchema = Joi.object({
             'string.empty': 'Lastname cannot be empty.',
             'any.required': 'Lastname is required.',
         }),
-});
+})
 
 export const organizerValidationSchema = Joi.object({
     name: Joi.string()

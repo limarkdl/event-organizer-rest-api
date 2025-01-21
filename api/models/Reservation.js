@@ -1,5 +1,5 @@
-import sequelize from "../sequelize.config.js";
-import {DataTypes} from "sequelize";
+import sequelize from "../sequelize.config.js"
+import {DataTypes} from "sequelize"
 
 export const Reservation = sequelize.define('Reservation', {
     id: {
@@ -7,8 +7,8 @@ export const Reservation = sequelize.define('Reservation', {
         primaryKey: true,
         autoIncrement: true
     },
-});
+})
 
-console.log(Reservation === sequelize.models.Reservation);
+console.log(Reservation === sequelize.models.Reservation)
 
-export default Reservation;
+export default Reservation

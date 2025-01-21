@@ -1,5 +1,5 @@
-import sequelize from "../sequelize.config.js";
-import {DataTypes} from "sequelize";
+import sequelize from "../sequelize.config.js"
+import {DataTypes} from "sequelize"
 
 export const User = sequelize.define('User', {
     id: {
@@ -25,8 +25,8 @@ export const User = sequelize.define('User', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-});
+})
 
-console.log(User === sequelize.models.User);
+console.log(User === sequelize.models.User)
 
-export default User;
+export default User
