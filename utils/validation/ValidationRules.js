@@ -28,3 +28,14 @@ export const userValidationSchema = Joi.object({
         }),
 });
 
+export const organizerValidationSchema = Joi.object({
+    name: Joi.string()
+        .min(2)
+        .max(255)
+        .required()
+        .messages({
+            'string.min': 'Name should be at least 2 characters.',
+            'string.max': 'Name should be at max 255 characters.',
+            'any.required': 'Name is required.',
+        })
+})

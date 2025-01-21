@@ -9,6 +9,9 @@ const customFormat = format.combine(
     })
 );
 
+/**
+ * Logger for storing exception events and extra info. Useful for debugging.
+ */
 const logger = createLogger({
     level: 'info',
     format: customFormat,
