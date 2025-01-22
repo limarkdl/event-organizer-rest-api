@@ -36,12 +36,12 @@
 </main>
 
 <script>
-    const baseURL = '/api/users';
+    const baseURL = '/api/user';
 
     document.getElementById('getUsersForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const eventId = document.getElementById('eventId').value;
-        const url = eventId ? `${baseURL}/list?eventID=${eventId}` : `${baseURL}/list`;
+        const url = eventId ? `${baseURL}?eventID=${eventId}` : baseURL;
 
         try {
             const response = await fetch(url);

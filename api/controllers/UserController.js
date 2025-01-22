@@ -27,6 +27,10 @@ class UserController {
 
             const users = await db.User.findAll(queryOptions)
 
+            if (!users || users.length === 0) {
+                return res.status(404).send({ message: "No users found." })
+            }
+
             res.status(200).send(users)
         } catch (error) {
             res.handleError(error, 422, 'An error occurred while retrieving users.')

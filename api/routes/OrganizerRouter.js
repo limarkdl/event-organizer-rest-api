@@ -5,7 +5,7 @@ import Middleware from "../../utils/middleware/middleware.js"
 const OrganizerRouter = new express.Router()
 
 
-OrganizerRouter.get('/list', OrganizerController.getAllOrganizers)
+OrganizerRouter.get('/', OrganizerController.getAllOrganizers)
 
 OrganizerRouter.post('/create', Middleware.contentTypeJsonValidator, OrganizerController.createOrganizer)
 

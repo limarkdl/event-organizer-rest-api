@@ -40,7 +40,7 @@
         e.preventDefault();
 
         const hasEvents = document.getElementById('hasEvents').value;
-        const url = hasEvents ? `${baseURL}/list?hasEvents=${hasEvents}` : `${baseURL}/list`;
+        const url = hasEvents ? `${baseURL}?hasEvents=${hasEvents}` : baseURL;
 
         try {
             const response = await fetch(url);

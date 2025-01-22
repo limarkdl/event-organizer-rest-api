@@ -4,7 +4,7 @@ import EventTypeController from "../controllers/EventTypeController.js"
 const EventTypeRouter = new express.Router()
 
 
-EventTypeRouter.get('/list', EventTypeController.getAllEventTypes)
+EventTypeRouter.get('/', EventTypeController.getAllEventTypes)
 
 EventTypeRouter.post('/create', EventTypeController.createEventType)
 

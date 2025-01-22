@@ -6,7 +6,7 @@ import Middleware from "../../utils/middleware/middleware.js"
 const UserRouter = new express.Router()
 
 
-UserRouter.get('/list', UserController.getAllUsers)
+UserRouter.get('/', UserController.getAllUsers)
 
 UserRouter.post('/create', Middleware.contentTypeJsonValidator, UserController.createUser)
 

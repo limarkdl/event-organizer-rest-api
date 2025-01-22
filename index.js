@@ -56,10 +56,10 @@ try {
     console.error('Unable to connect to the database:', error)
 }
 
-app.use(`${API_BASE}/users`, UserRouter)
+app.use(`${API_BASE}/user`, UserRouter)
 app.use(`${API_BASE}/organizer`, OrganizerRouter)
 app.use(`${API_BASE}/event`, EventRouter)
-app.use(`${API_BASE}/eventType`, EventTypeRouter)
+app.use(`${API_BASE}/event-type`, EventTypeRouter)
 app.use(`${API_BASE}/reservation`, ReservationRouter)
 
 app.use((req, res) => {

@@ -4,7 +4,7 @@ import EventController from "../controllers/EventController.js"
 const EventRouter = new express.Router()
 
 
-EventRouter.get('/list', EventController.getAllEvents)
+EventRouter.get('/', EventController.getAllEvents)
 
 EventRouter.post('/create', EventController.createEvent)
 
