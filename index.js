@@ -29,8 +29,24 @@ app.use((req, res, next) => {
     next()
 })
 
+
 app.get("/", (req, res) => {
-    res.render('index')
+    res.render('index', {title: 'Home Page'});
+})
+app.get("/organizers", (req, res) => {
+    res.render('organizers', {title: 'Organizers'});
+})
+app.get("/users", (req, res) => {
+    res.render('users', {title: 'Users'});
+})
+app.get("/events", (req, res) => {
+    res.render('events', {title: 'Events'});
+})
+app.get("/reservations", (req, res) => {
+    res.render('reservations', {title: 'Reservations'});
+})
+app.get("/event-types", (req, res) => {
+    res.render('event-types', {title: 'Event types'});
 })
 
 try {
@@ -47,7 +63,7 @@ app.use(`${API_BASE}/eventType`, EventTypeRouter)
 app.use(`${API_BASE}/reservation`, ReservationRouter)
 
 app.use((req, res) => {
-    res.render('404')
+    res.status(404).render('404')
 })
 
 app.listen(3000, () => {

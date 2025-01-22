@@ -1,0 +1,110 @@
+<%- include('templates/header') %>
+
+
+<main class="container mx-auto px-4 py-6">
+    <h2 class="text-2xl font-semibold mb-4">Manage Organizers</h2>
+
+    <h3 class="text-xl font-medium mb-2">Get All Organizers</h3>
+    <form id="getOrganizersForm" class="mb-6">
+        <label for="hasEvents" class="block text-gray-700 mb-2">Filter by events: (optional)</label>
+        <select id="hasEvents" name="hasEvents" class="border border-gray-300 p-2 rounded w-full mb-4">
+            <option value="">All</option>
+            <option value="true">With Events</option>
+            <option value="false">Without Events</option>
+        </select>
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Get Organizers</button>
+    </form>
+    <div id="organizersOutput" class="bg-gray-100 p-4 rounded shadow mb-6"></div>
+
+    <h3 class="text-xl font-medium mb-2">Create Organizer</h3>
+    <form id="createOrganizerForm" class="mb-6">
+        <label for="organizerName" class="block text-gray-700 mb-2">Name:</label>
+        <input type="text" id="organizerName" name="name" required class="border border-gray-300 p-2 rounded w-full mb-4">
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Create Organizer</button>
+    </form>
+    <div id="createOutput" class="bg-gray-100 p-4 rounded shadow mb-6"></div>
+
+    <h3 class="text-xl font-medium mb-2">Delete Organizer</h3>
+    <form id="deleteOrganizerForm" class="mb-6">
+        <label for="organizerId" class="block text-gray-700 mb-2">Organizer ID:</label>
+        <input type="number" id="organizerId" name="organizerId" class="border border-gray-300 p-2 rounded w-full mb-4">
+        <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Delete Organizer</button>
+    </form>
+    <div id="deleteOutput" class="bg-gray-100 p-4 rounded shadow mb-6"></div>
+</main>
+
+<script>
+    const baseURL = '/api/organizer';
+
+    document.getElementById('getOrganizersForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const hasEvents = document.getElementById('hasEvents').value;
+        const url = hasEvents ? `${baseURL}/list?hasEvents=${hasEvents}` : `${baseURL}/list`;
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const outputDiv = document.getElementById('organizersOutput');
+            if (response.ok) {
+                outputDiv.innerHTML = '<h4 class="text-lg font-semibold">Organizers:</h4>' +
+                    '<ul class="list-disc pl-6">' +
+                    data.map(org => `<li>ID: ${org.id}, Name: ${org.name}</li>`).join('') +
+                    '</ul>';
+            } else {
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`;
+            }
+        } catch (error) {
+            console.error('Error fetching organizers:', error);
+        }
+    });
+
+    document.getElementById('createOrganizerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('organizerName').value;
+
+        try {
+            const response = await fetch(`${baseURL}/create`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name})
+            });
+
+            const data = await response.json();
+
+            const outputDiv = document.getElementById('createOutput');
+            if (response.ok) {
+                outputDiv.innerHTML = `<p style="color: green;">${data.message}</p>`;
+            } else {
+                outputDiv.innerHTML = `<p style="color: red;">Error: ${data.errors || data.message}</p>`;
+            }
+        } catch (error) {
+            console.error('Error creating organizer:', error);
+        }
+    });
+
+    document.getElementById('deleteOrganizerForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const id = document.getElementById('organizerId').value;
+
+        try {
+            const response = await fetch(`${baseURL}/delete?id=${id}`, {
+                method: 'DELETE'
+            });
+
+            const data = await response.json();
+
+            const outputDiv = document.getElementById('deleteOutput');
+            if (response.ok) {
+                outputDiv.innerHTML = `<p style="color: green;">Organizer deleted successfully.</p>`;
+            } else {
+                outputDiv.innerHTML = `<p style="color: red;">Error: ${data.message}</p>`;
+            }
+        } catch (error) {
+            console.error('Error deleting organizer:', error);
+        }
+    });
+</script>
