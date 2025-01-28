@@ -1,7 +1,8 @@
-import {organizerValidationSchema, userValidationSchema} from "./ValidationRules.js"
+import {eventValidationSchema, organizerValidationSchema, userValidationSchema} from "./ValidationRules.js"
 
 
 export const ValidationRules = {
     userValidationSchema,
-    organizerValidationSchema
+    organizerValidationSchema,
+    eventValidationSchema,
 }

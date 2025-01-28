@@ -12,7 +12,7 @@ EventRouter.get('/:id', EventController.getEvent)
 
 EventRouter.put('/update', EventController.updateEvent)
 
-EventRouter.delete('/delete', EventController.deleteEvent)
+EventRouter.delete('/delete/:id', EventController.deleteEvent)
 
 
 export default EventRouter
