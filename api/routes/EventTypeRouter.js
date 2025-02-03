@@ -8,7 +8,7 @@ EventTypeRouter.get('/', EventTypeController.getAllEventTypes)
 
 EventTypeRouter.post('/create', EventTypeController.createEventType)
 
-EventTypeRouter.delete('/delete', EventTypeController.deleteEventType)
+EventTypeRouter.delete('/delete/:id', EventTypeController.deleteEventType)
 
 
 export default EventTypeRouter

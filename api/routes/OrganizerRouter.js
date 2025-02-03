@@ -9,7 +9,7 @@ OrganizerRouter.get('/', OrganizerController.getAllOrganizers)
 
 OrganizerRouter.post('/create', Middleware.contentTypeJsonValidator, OrganizerController.createOrganizer)
 
-OrganizerRouter.delete('/delete', OrganizerController.deleteOrganizer)
+OrganizerRouter.delete('/delete/:id', OrganizerController.deleteOrganizer)
 
 
 export default OrganizerRouter

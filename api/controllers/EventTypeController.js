@@ -52,7 +52,7 @@ class EventTypeController {
 
     static async deleteEventType(req, res) {
         try {
-            const {id} = req.query
+            const {id} = req.params
 
             if (!id || isNaN(id)) {
                 return res.status(422).send({message: 'Invalid ID provided.'})

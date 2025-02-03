@@ -91,7 +91,7 @@
         const id = document.getElementById('organizerId').value;
 
         try {
-            const response = await fetch(`${baseURL}/delete?id=${id}`, {
+            const response = await fetch(`${baseURL}/delete/${id}`, {
                 method: 'DELETE'
             });
 

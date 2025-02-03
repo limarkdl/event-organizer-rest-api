@@ -129,3 +129,14 @@ export const eventValidationSchema = Joi.object({
     numOfParticipants: Joi.number()
         .equal(0)
 })
+
+export const reservationValidationSchema = Joi.object({
+    eventID: Joi.number()
+        .min(1)
+        .max(Number.MAX_SAFE_INTEGER)
+        .required(),
+    userID: Joi.number()
+        .min(1)
+        .max(Number.MAX_SAFE_INTEGER)
+        .required()
+})
