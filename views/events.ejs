@@ -30,43 +30,43 @@
 
 <script>
     function buildURL(baseURL, params) {
-        const url = new URL(baseURL);
+        const url = new URL(baseURL)
 
         Object.keys(params).forEach(key => {
             if (params[key] !== undefined && params[key] !== null && params[key] !== "") {
-                url.searchParams.append(key, params[key]);
+                url.searchParams.append(key, params[key])
             }
-        });
+        })
 
-        return url.toString();
+        return url.toString()
     }
 
     function epochToDate(epochSeconds) {
-        if (!epochSeconds || isNaN(epochSeconds)) return null;
-        return new Date(epochSeconds * 1000).toISOString();
+        if (!epochSeconds || isNaN(epochSeconds)) return null
+        return new Date(epochSeconds * 1000).toISOString()
     }
 
-    const baseURL = 'http://localhost:3000/api/event';
+    const baseURL = 'http://localhost:3000/api/event'
 
     document.getElementById('getEventsForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         const params = {
             organizerID: document.getElementById('organizerId')?.value,
             eventTypeID: document.getElementById('eventTypeId')?.value,
             dateTime: document.getElementById('dateTime')?.value,
             userIDs: document.getElementById('userIds')?.value
-        };
+        }
         console.log(document.getElementById('organizerId')?.value)
 
 
         const url = buildURL(baseURL, params)
 
         try {
-            const response = await fetch(url);
-            const data = await response.json();
+            const response = await fetch(url)
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('eventsOutput');
+            const outputDiv = document.getElementById('eventsOutput')
             if (response.ok) {
                 outputDiv.innerHTML = '<h4 class="text-lg font-semibold">Events:</h4>' +
                     '<ul class="list-disc pl-6">' +
@@ -77,35 +77,35 @@ Price: €${org.price},
 Date: ${epochToDate(org.dateTime)},
 Location: ${org.locationLongitude + " / " + org.locationLatitude}
 </li>`).join('') +
-                    '</ul>';
+                    '</ul>'
             } else {
-                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`;
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`
             }
         } catch (error) {
-            console.error('Error fetching organizers:', error);
+            console.error('Error fetching organizers:', error)
         }
-    });
+    })
 
     document.getElementById('deleteEventForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const eventId = document.getElementById('eventId').value;
+        const eventId = document.getElementById('eventId').value
 
         try {
             const response = await fetch(`${baseURL}/delete/${eventId}`, {
                 method: 'DELETE'
-            });
+            })
 
-            const data = await response.json();
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('deleteEventOutput');
+            const outputDiv = document.getElementById('deleteEventOutput')
             if (response.ok) {
-                outputDiv.innerHTML = `<p class="text-green-500">Event deleted successfully.</p>`;
+                outputDiv.innerHTML = `<p class="text-green-500">Event deleted successfully.</p>`
             } else {
-                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`;
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`
             }
         } catch (error) {
-            console.error('Error deleting event:', error);
+            console.error('Error deleting event:', error)
         }
-    });
+    })
 </script>

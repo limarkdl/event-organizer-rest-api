@@ -32,74 +32,74 @@
 </main>
 
 <script>
-    const baseURL = '/api/event-type';
+    const baseURL = '/api/event-type'
 
     document.getElementById('getEventTypesForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
         try {
-            const response = await fetch(baseURL);
-            const data = await response.json();
+            const response = await fetch(baseURL)
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('eventTypesOutput');
+            const outputDiv = document.getElementById('eventTypesOutput')
             if (response.ok) {
                 outputDiv.innerHTML = '<h4 class="text-lg font-semibold">Event Types:</h4>' +
                     '<ul class="list-disc pl-6">' +
                     data.map(eventType => `<li>ID: ${eventType.id}, Name: ${eventType.name}</li>`).join('') +
-                    '</ul>';
+                    '</ul>'
             } else {
-                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`;
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`
             }
         } catch (error) {
-            console.error('Error fetching event types:', error);
+            console.error('Error fetching event types:', error)
         }
-    });
+    })
 
     document.getElementById('createEventTypeForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const name = document.getElementById('eventTypeName').value;
+        const name = document.getElementById('eventTypeName').value
 
         try {
             const response = await fetch(`${baseURL}/create`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({name})
-            });
+            })
 
-            const data = await response.json();
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('createEventTypeOutput');
+            const outputDiv = document.getElementById('createEventTypeOutput')
             if (response.ok) {
-                outputDiv.innerHTML = `<p class="text-green-500">${data.message}</p>`;
+                outputDiv.innerHTML = `<p class="text-green-500">${data.message}</p>`
             } else {
-                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.errors || data.message}</p>`;
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.errors || data.message}</p>`
             }
         } catch (error) {
-            console.error('Error creating event type:', error);
+            console.error('Error creating event type:', error)
         }
-    });
+    })
 
     document.getElementById('deleteEventTypeForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const id = document.getElementById('eventTypeId').value;
+        const id = document.getElementById('eventTypeId').value
 
         try {
             const response = await fetch(`${baseURL}/delete/${id}`, {
                 method: 'DELETE'
-            });
+            })
 
-            const data = await response.json();
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('deleteEventTypeOutput');
+            const outputDiv = document.getElementById('deleteEventTypeOutput')
             if (response.ok) {
-                outputDiv.innerHTML = `<p class="text-green-500">Event type deleted successfully.</p>`;
+                outputDiv.innerHTML = `<p class="text-green-500">Event type deleted successfully.</p>`
             } else {
-                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`;
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`
             }
         } catch (error) {
-            console.error('Error deleting event type:', error);
+            console.error('Error deleting event type:', error)
         }
-    });
+    })
 </script>

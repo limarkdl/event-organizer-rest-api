@@ -34,77 +34,77 @@
 </main>
 
 <script>
-    const baseURL = '/api/organizer';
+    const baseURL = '/api/organizer'
 
     document.getElementById('getOrganizersForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const hasEvents = document.getElementById('hasEvents').value;
-        const url = hasEvents ? `${baseURL}?hasEvents=${hasEvents}` : baseURL;
+        const hasEvents = document.getElementById('hasEvents').value
+        const url = hasEvents ? `${baseURL}?hasEvents=${hasEvents}` : baseURL
 
         try {
-            const response = await fetch(url);
-            const data = await response.json();
+            const response = await fetch(url)
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('organizersOutput');
+            const outputDiv = document.getElementById('organizersOutput')
             if (response.ok) {
                 outputDiv.innerHTML = '<h4 class="text-lg font-semibold">Organizers:</h4>' +
                     '<ul class="list-disc pl-6">' +
                     data.map(org => `<li>ID: ${org.id}, Name: ${org.name}</li>`).join('') +
-                    '</ul>';
+                    '</ul>'
             } else {
-                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`;
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`
             }
         } catch (error) {
-            console.error('Error fetching organizers:', error);
+            console.error('Error fetching organizers:', error)
         }
-    });
+    })
 
     document.getElementById('createOrganizerForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const name = document.getElementById('organizerName').value;
+        const name = document.getElementById('organizerName').value
 
         try {
             const response = await fetch(`${baseURL}/create`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({name})
-            });
+            })
 
-            const data = await response.json();
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('createOutput');
+            const outputDiv = document.getElementById('createOutput')
             if (response.ok) {
-                outputDiv.innerHTML = `<p style="color: green;">${data.message}</p>`;
+                outputDiv.innerHTML = `<p style="color: green">${data.message}</p>`
             } else {
-                outputDiv.innerHTML = `<p style="color: red;">Error: ${data.errors || data.message}</p>`;
+                outputDiv.innerHTML = `<p style="color: red">Error: ${data.errors || data.message}</p>`
             }
         } catch (error) {
-            console.error('Error creating organizer:', error);
+            console.error('Error creating organizer:', error)
         }
-    });
+    })
 
     document.getElementById('deleteOrganizerForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
+        e.preventDefault()
 
-        const id = document.getElementById('organizerId').value;
+        const id = document.getElementById('organizerId').value
 
         try {
             const response = await fetch(`${baseURL}/delete/${id}`, {
                 method: 'DELETE'
-            });
+            })
 
-            const data = await response.json();
+            const data = await response.json()
 
-            const outputDiv = document.getElementById('deleteOutput');
+            const outputDiv = document.getElementById('deleteOutput')
             if (response.ok) {
-                outputDiv.innerHTML = `<p style="color: green;">Organizer deleted successfully.</p>`;
+                outputDiv.innerHTML = `<p style="color: green">Organizer deleted successfully.</p>`
             } else {
-                outputDiv.innerHTML = `<p style="color: red;">Error: ${data.message}</p>`;
+                outputDiv.innerHTML = `<p style="color: red">Error: ${data.message}</p>`
             }
         } catch (error) {
-            console.error('Error deleting organizer:', error);
+            console.error('Error deleting organizer:', error)
         }
-    });
+    })
 </script>

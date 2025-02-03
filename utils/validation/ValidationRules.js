@@ -82,11 +82,11 @@ export const eventValidationSchema = Joi.object({
         .not(0)
         .positive()
         .custom((value, helpers) => {
-            const currentTimestamp = Math.floor(Date.now() / 1000);
+            const currentTimestamp = Math.floor(Date.now() / 1000)
             if (value <= currentTimestamp) {
-                return helpers.error('any.invalid', {value});
+                return helpers.error('any.invalid', {value})
             }
-            return value;
+            return value
         }, 'Future dateTime Validation')
         .required()
         .messages({

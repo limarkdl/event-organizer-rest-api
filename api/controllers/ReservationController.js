@@ -1,7 +1,6 @@
 import db from "../models/index.js"
 import {ValidationRules} from "../../utils/validation/index.js"
-import sequelize from "../sequelize.config.js";
-import e from "express";
+import sequelize from "../sequelize.config.js"
 
 class ReservationController {
     static async getAllReservations(req, res) {
