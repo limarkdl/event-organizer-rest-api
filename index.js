@@ -31,22 +31,22 @@ app.use((req, res, next) => {
 
 
 app.get("/", (req, res) => {
-    res.render('index', {title: 'Home Page'})
+    res.render('index', {title: 'Home Page'});
 })
 app.get("/organizers", (req, res) => {
-    res.render('organizers', {title: 'Organizers'})
+    res.render('organizers', {title: 'Organizers'});
 })
 app.get("/users", (req, res) => {
-    res.render('users', {title: 'Users'})
+    res.render('users', {title: 'Users'});
 })
 app.get("/events", (req, res) => {
-    res.render('events', {title: 'Events'})
+    res.render('events', {title: 'Events'});
 })
 app.get("/reservations", (req, res) => {
-    res.render('reservations', {title: 'Reservations'})
+    res.render('reservations', {title: 'Reservations'});
 })
 app.get("/event-types", (req, res) => {
-    res.render('event-types', {title: 'Event types'})
+    res.render('event-types', {title: 'Event types'});
 })
 
 try {

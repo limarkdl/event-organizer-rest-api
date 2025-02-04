@@ -1,7 +1,7 @@
 import db from "../models/index.js"
 import {ValidationRules} from "../../utils/validation/index.js"
 import {Sequelize} from "sequelize"
-import sequelize from "../sequelize.config.js"
+import sequelize from "../sequelize.config.js";
 
 class OrganizerController {
     /**

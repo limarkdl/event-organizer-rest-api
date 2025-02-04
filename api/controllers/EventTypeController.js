@@ -1,4 +1,4 @@
-import db from "../models/index.js"
+import db from "../models/index.js";
 
 class EventTypeController {
     /**
@@ -16,7 +16,7 @@ class EventTypeController {
 
             return res.status(200).send(eventTypes)
         } catch (error) {
-            return res.handleError(error, 500, "An internal server error occurred.")
+            return res.handleError(error, 500, "An internal server error occurred.");
         }
     }
 
@@ -27,26 +27,26 @@ class EventTypeController {
      */
     static async createEventType(req, res) {
         try {
-            const { name } = req.body
+            const { name } = req.body;
 
             if (!name || name.length < 2 || name.length > 255) {
-                return res.status(422).send({ message: 'The "name" field is required and must be between 2 and 255 characters long.' })
+                return res.status(422).send({ message: 'The "name" field is required and must be between 2 and 255 characters long.' });
             }
 
-            const existingEventType = await db.EventType.findOne({ where: { name } })
+            const existingEventType = await db.EventType.findOne({ where: { name } });
             if (existingEventType) {
-                return res.status(409).send({ message: 'An event type with this name already exists.' })
+                return res.status(409).send({ message: 'An event type with this name already exists.' });
             }
 
-            const newEventType = await db.EventType.create({ name })
+            const newEventType = await db.EventType.create({ name });
 
             return res.status(200).send({
                 message: 'Event type successfully created.',
                 eventType: newEventType
-            })
+            });
 
         } catch (error) {
-            res.handleError(error, 500, "An internal server error occurred.")
+            res.handleError(error, 500, "An internal server error occurred.");
         }
     }
 
