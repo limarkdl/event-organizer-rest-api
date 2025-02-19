@@ -1,10 +1,16 @@
 import db from "../models/index.js"
 import {ValidationRules} from "../../utils/validation/index.js"
 import sequelize from "../sequelize.config.js";
-import e from "express";
 
 class ReservationController {
     static async getAllReservations(req, res) {
+        try {
+            const reservations = await db.Reservation.findAll({})
+
+            return res.status(200).send(reservations)
+        } catch (error) {
+            res.handleError(error, 500, "An error occurred.")
+        }
     }
 
     static async createReservation(req, res) {

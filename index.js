@@ -67,9 +67,11 @@ app.use((req, res) => {
 })
 
 app.listen(3000, () => {
-        console.log("Server is running on port 3000")
-    }
-)
+    console.log("Server is running on port 3000")
+}).on('error', (err) => {
+    console.error('Server failed to start:', err);
+});
+
 
 // await sequelize.sync({ force: true })
 // console.log("All models were synchronized successfully.")

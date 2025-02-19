@@ -1,1 +1,111 @@
 <%- include('templates/header') %>
+
+
+<main class="container mx-auto px-4 py-6">
+    <h2 class="text-2xl font-semibold mb-4">Manage Events</h2>
+
+    <h3 class="text-xl font-medium mb-2">Get All Reservation</h3>
+    <form id="getReservationsForm" class="mb-6">
+        <label for="organizerId" class="block text-gray-700 mb-2">Filter by Organizer ID (optional):</label>
+        <input type="number" id="organizerId" name="organizerId" class="border border-gray-300 p-2 rounded w-full mb-4">
+        <label for="eventTypeId" class="block text-gray-700 mb-2">Filter by EventType ID (optional):</label>
+        <input type="number" id="eventTypeId" name="eventTypeId" class="border border-gray-300 p-2 rounded w-full mb-4">
+        <label for="dateTime" class="block text-gray-700 mb-2">Filter by DateTime (optional):</label>
+        <input type="number" id="dateTime" name="dateTime" class="border border-gray-300 p-2 rounded w-full mb-4">
+        <label for="userIds" class="block text-gray-700 mb-2">Filter by User IDs (optional):</label>
+        <input type="number" id="userIds" name="userIds" class="border border-gray-300 p-2 rounded w-full mb-4">
+        <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Get Reservations
+        </button>
+    </form>
+    <div id="reservationsOutput" class="bg-gray-100 p-4 rounded shadow mb-6"></div>
+
+    <h3 class="text-xl font-medium mb-2">Get All Reservation</h3>
+    <form id="createReservationForm" class="mb-6">
+        <label for="create_userId" class="block text-gray-700 mb-2">User ID:</label>
+        <input type="text" id="create_userId" name="name" required
+               class="border border-gray-300 p-2 rounded w-full mb-4">
+        <label for="create_eventId" class="block text-gray-700 mb-2">Event ID:</label>
+        <input type="text" id="create_eventId" name="name" required
+               class="border border-gray-300 p-2 rounded w-full mb-4">
+        <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Create Reservation
+        </button>
+    </form>
+    <div id="reservationCreationOutput" class="bg-gray-100 p-4 rounded shadow mb-6"></div>
+</main>
+
+<script>
+    function buildURL(baseURL, params) {
+        const url = new URL(baseURL);
+
+        Object.keys(params).forEach(key => {
+            if (params[key] !== undefined && params[key] !== null && params[key] !== "") {
+                url.searchParams.append(key, params[key]);
+            }
+        });
+
+        return url.toString();
+    }
+
+    function epochToDate(epochSeconds) {
+        if (!epochSeconds || isNaN(epochSeconds)) return null;
+        return new Date(epochSeconds * 1000).toISOString();
+    }
+
+    const baseURL = 'http://localhost:3000/api/reservation';
+
+    document.getElementById('getReservationsForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        const url = buildURL(baseURL, {})
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            const outputDiv = document.getElementById('reservationsOutput');
+            if (response.ok) {
+                outputDiv.innerHTML = '<h4 class="text-lg font-semibold">Reservations:</h4>' +
+                    '<ul class="list-disc pl-6">' +
+                    data.map(org => `<li>Event ID: ${org.eventID}, User ID: ${org.userID}</li>`).join('') +
+                    '</ul>';
+            } else {
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.message}</p>`;
+            }
+        } catch (error) {
+            console.error('Error fetching reservations:', error);
+        }
+    });
+
+    document.getElementById('createReservationForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const url = buildURL(baseURL, {})
+
+        const userId = document.getElementById('create_userId').value;
+        const eventId = document.getElementById('create_eventId').value;
+
+        if (!userId || !eventId) {
+            alert("User ID and Organizer ID are required!");
+            return;
+        }
+
+        try {
+            const response = await fetch(`${url}/create`, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ eventID: eventId, userID: userId })
+            });
+
+            const data = await response.json();
+
+            const outputDiv = document.getElementById('reservationCreationOutput');
+            if (response.ok) {
+                outputDiv.innerHTML = `<p class="text-green-500">${data.message}</p>`;
+            } else {
+                outputDiv.innerHTML = `<p class="text-red-500">Error: ${data.errors || data.message}</p>`;
+            }
+        } catch (error) {
+            console.error('Error creating reservation:', error);
+        }
+    });
+
+</script>

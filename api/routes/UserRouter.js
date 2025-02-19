@@ -14,7 +14,7 @@ UserRouter.get('/:id', UserController.getUser)
 
 UserRouter.put('/update', Middleware.contentTypeJsonValidator, UserController.updateUser)
 
-UserRouter.delete('/delete', UserController.deleteUser)
+UserRouter.delete('/delete/:id', UserController.deleteUser)
 
 
 export default UserRouter
