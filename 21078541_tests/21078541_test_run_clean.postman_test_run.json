@@ -1,0 +1,738 @@
+{
+	"id": "b6f7b2d4-7215-4663-ab07-6801f141b221",
+	"name": "Ivan Kostin | Event RESTful API",
+	"timestamp": "2025-03-03T17:07:43.440Z",
+	"collection_id": "41275056-241930a7-eace-4f54-b32d-2efa5b913add",
+	"folder_id": 0,
+	"environment_id": "41275056-b6b0b7ca-4af5-4676-ac94-96fc6cdb187d",
+	"totalPass": 44,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2025-03-03T17:07:42.486Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "6c4f00ed-27be-4224-92b7-73d60e43d791",
+			"name": "Create user",
+			"url": "http://localhost:3000/api/user/create",
+			"time": 58,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Should successfully create a user with valid data": true,
+				"Should return 409 when username already exists": true,
+				"Should return 422 when required fields are missing": true,
+				"Should return specific validation error messages": true,
+				"Response structure should be valid": true,
+				"Response time is acceptable": true,
+				"Content-Type header is application/json": true,
+				"Should validate username format": true,
+				"Should validate name formats": true
+			},
+			"testPassFailCounts": {
+				"Should successfully create a user with valid data": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 409 when username already exists": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 422 when required fields are missing": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return specific validation error messages": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response structure should be valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should validate username format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should validate name formats": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				58
+			],
+			"allTests": [
+				{
+					"Should successfully create a user with valid data": true,
+					"Should return 409 when username already exists": true,
+					"Should return 422 when required fields are missing": true,
+					"Should return specific validation error messages": true,
+					"Response structure should be valid": true,
+					"Response time is acceptable": true,
+					"Content-Type header is application/json": true,
+					"Should validate username format": true,
+					"Should validate name formats": true
+				}
+			]
+		},
+		{
+			"id": "0df2b6fc-77ac-43c6-ac8a-c8feedce3104",
+			"name": "Get user",
+			"url": "http://localhost:3000/api/user/1",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Should successfully retrieve user with valid ID": true,
+				"Should return 404 when user is not found": true,
+				"Should return 422 for invalid ID format": true,
+				"Should return 422 for missing ID": true,
+				"Response structure should be valid": true,
+				"Content-Type header is application/json": true,
+				"Response time is acceptable": true,
+				"User properties have correct data types": true,
+				"User data should not contain sensitive information": true,
+				"Should handle IDs with leading zeros correctly": true,
+				"Custom error handler is working properly": true
+			},
+			"testPassFailCounts": {
+				"Should successfully retrieve user with valid ID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 404 when user is not found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 422 for invalid ID format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 422 for missing ID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response structure should be valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				},
+				"User properties have correct data types": {
+					"pass": 1,
+					"fail": 0
+				},
+				"User data should not contain sensitive information": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should handle IDs with leading zeros correctly": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Custom error handler is working properly": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				4
+			],
+			"allTests": [
+				{
+					"Should successfully retrieve user with valid ID": true,
+					"Should return 404 when user is not found": true,
+					"Should return 422 for invalid ID format": true,
+					"Should return 422 for missing ID": true,
+					"Response structure should be valid": true,
+					"Content-Type header is application/json": true,
+					"Response time is acceptable": true,
+					"User properties have correct data types": true,
+					"User data should not contain sensitive information": true,
+					"Should handle IDs with leading zeros correctly": true,
+					"Custom error handler is working properly": true
+				}
+			]
+		},
+		{
+			"id": "dfda6067-ce82-4da1-936a-6467a598d5a3",
+			"name": "List all users",
+			"url": "http://localhost:3000/api/user",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Should successfully retrieve all users when no eventID specified": true,
+				"Should successfully retrieve users filtered by eventID": true,
+				"Should return 404 when no users are found": true,
+				"Should return 404 when filtering by eventID returns no users": true,
+				"Should return 422 for invalid eventID format": true,
+				"Response structure should be valid": true,
+				"Content-Type header is application/json": true,
+				"Response time is acceptable": true,
+				"Users should have all expected fields": true,
+				"Users should not contain sensitive data": true,
+				"Reservations should have correct structure when filtering by eventID": true
+			},
+			"testPassFailCounts": {
+				"Should successfully retrieve all users when no eventID specified": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should successfully retrieve users filtered by eventID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 404 when no users are found": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 404 when filtering by eventID returns no users": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 422 for invalid eventID format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response structure should be valid": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header is application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is acceptable": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Users should have all expected fields": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Users should not contain sensitive data": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Reservations should have correct structure when filtering by eventID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3
+			],
+			"allTests": [
+				{
+					"Should successfully retrieve all users when no eventID specified": true,
+					"Should successfully retrieve users filtered by eventID": true,
+					"Should return 404 when no users are found": true,
+					"Should return 404 when filtering by eventID returns no users": true,
+					"Should return 422 for invalid eventID format": true,
+					"Response structure should be valid": true,
+					"Content-Type header is application/json": true,
+					"Response time is acceptable": true,
+					"Users should have all expected fields": true,
+					"Users should not contain sensitive data": true,
+					"Reservations should have correct structure when filtering by eventID": true
+				}
+			]
+		},
+		{
+			"id": "917d8784-4217-4c70-a9a2-dc3b4a032642",
+			"name": "Update user",
+			"url": "http://localhost:3000/api/user/update",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				43
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "029761ec-6d95-4f2c-9289-98cd05b6fc86",
+			"name": "Create organizer",
+			"url": "http://localhost:3000/api/organizer/create",
+			"time": 33,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				33
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4e27589b-1498-49fd-bafd-c0fa0d60aa2d",
+			"name": "List organizers",
+			"url": "http://localhost:3000/api/organizer",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "09f46019-6813-4d87-a9d3-498f35fcddf6",
+			"name": "Create Event type",
+			"url": "http://localhost:3000/api/event-type/create",
+			"time": 45,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				45
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b72a2c20-61b5-4f2c-8ae2-940cb07aad16",
+			"name": "Get all Event types",
+			"url": "http://localhost:3000/api/event-type",
+			"time": 4,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e31f1af8-d946-47e7-aa42-4799ac35d3a1",
+			"name": "Create event",
+			"url": "http://localhost:3000/api/event/create",
+			"time": 36,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				36
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2763ef09-5d1c-4ecb-aabf-8dcd6cbc3635",
+			"name": "Get all events",
+			"url": "http://localhost:3000/api/event",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Should return 200 OK when getting all events": true,
+				"Events should have the correct structure": true,
+				"Should filter events by valid organizerID": true,
+				"Should return 404 for non-existent organizerID": true,
+				"Should filter events by valid eventTypeID": true,
+				"Should return 404 for non-existent eventTypeID": true,
+				"Should filter events by dateTime": true,
+				"Should return 422 for invalid dateTime format": true,
+				"Should filter events by userIDs": true,
+				"Should return 422 for invalid userIDs format": true,
+				"Should apply multiple filters correctly": true,
+				"Should have proper error handling structure": true,
+				"Response time is less than 1000ms": true
+			},
+			"testPassFailCounts": {
+				"Should return 200 OK when getting all events": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Events should have the correct structure": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should filter events by valid organizerID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 404 for non-existent organizerID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should filter events by valid eventTypeID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 404 for non-existent eventTypeID": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should filter events by dateTime": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 422 for invalid dateTime format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should filter events by userIDs": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should return 422 for invalid userIDs format": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should apply multiple filters correctly": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Should have proper error handling structure": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Response time is less than 1000ms": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Should return 200 OK when getting all events": true,
+					"Events should have the correct structure": true,
+					"Should filter events by valid organizerID": true,
+					"Should return 404 for non-existent organizerID": true,
+					"Should filter events by valid eventTypeID": true,
+					"Should return 404 for non-existent eventTypeID": true,
+					"Should filter events by dateTime": true,
+					"Should return 422 for invalid dateTime format": true,
+					"Should filter events by userIDs": true,
+					"Should return 422 for invalid userIDs format": true,
+					"Should apply multiple filters correctly": true,
+					"Should have proper error handling structure": true,
+					"Response time is less than 1000ms": true
+				}
+			]
+		},
+		{
+			"id": "fab2f5ed-7c53-4581-8bfc-c7bc0f8cddcf",
+			"name": "Get event",
+			"url": "http://localhost:3000/api/event/1",
+			"time": 5,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				5
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5ead63a9-69d1-4d1c-9940-6250eb5be3a5",
+			"name": "Update event",
+			"url": "http://localhost:3000/api/event/update",
+			"time": 3,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9281d086-70bb-4d5d-9c63-1b17388793b0",
+			"name": "Create reservation",
+			"url": "http://localhost:3000/api/reservation/create",
+			"time": 36,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				36
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d67f7aa3-14d3-43fa-be9d-cbe74d032e54",
+			"name": "Get reservation",
+			"url": "http://localhost:3000/api/reservation/1",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "882be1ec-cc2c-47a7-be02-38eea61d1e27",
+			"name": "Get all reservations",
+			"url": "http://localhost:3000/api/reservation",
+			"time": 3,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				3
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a443b74f-3274-41fa-9f44-27a50fe5d063",
+			"name": "Delete reservation",
+			"url": "http://localhost:3000/api/reservation/delete/1",
+			"time": 42,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				42
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7778c867-c5cf-4b70-906c-d7759324e6d1",
+			"name": "Delete event",
+			"url": "http://localhost:3000/api/event/delete/1",
+			"time": 34,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				34
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f05b9cb2-6236-4331-9f5e-2f601883231e",
+			"name": "Delete event type",
+			"url": "http://localhost:3000/api/event-type/delete/1",
+			"time": 43,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				43
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3b9dfb39-6262-4166-aa0c-88af379bdf2a",
+			"name": "Delete organizer",
+			"url": "http://localhost:3000/api/organizer/delete?id=90",
+			"time": 4,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				4
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "affab5dd-d9a2-4b71-986b-ba3e08ba4744",
+			"name": "Delete user",
+			"url": "http://localhost:3000/api/users/delete?id=2",
+			"time": 2,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				2
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 411,
+	"collection": {
+		"requests": [
+			{
+				"id": "6c4f00ed-27be-4224-92b7-73d60e43d791",
+				"method": "POST"
+			},
+			{
+				"id": "0df2b6fc-77ac-43c6-ac8a-c8feedce3104",
+				"method": "GET"
+			},
+			{
+				"id": "dfda6067-ce82-4da1-936a-6467a598d5a3",
+				"method": "GET"
+			},
+			{
+				"id": "917d8784-4217-4c70-a9a2-dc3b4a032642",
+				"method": "PUT"
+			},
+			{
+				"id": "029761ec-6d95-4f2c-9289-98cd05b6fc86",
+				"method": "POST"
+			},
+			{
+				"id": "4e27589b-1498-49fd-bafd-c0fa0d60aa2d",
+				"method": "GET"
+			},
+			{
+				"id": "09f46019-6813-4d87-a9d3-498f35fcddf6",
+				"method": "POST"
+			},
+			{
+				"id": "b72a2c20-61b5-4f2c-8ae2-940cb07aad16",
+				"method": "GET"
+			},
+			{
+				"id": "e31f1af8-d946-47e7-aa42-4799ac35d3a1",
+				"method": "POST"
+			},
+			{
+				"id": "2763ef09-5d1c-4ecb-aabf-8dcd6cbc3635",
+				"method": "GET"
+			},
+			{
+				"id": "fab2f5ed-7c53-4581-8bfc-c7bc0f8cddcf",
+				"method": "GET"
+			},
+			{
+				"id": "5ead63a9-69d1-4d1c-9940-6250eb5be3a5",
+				"method": "PUT"
+			},
+			{
+				"id": "9281d086-70bb-4d5d-9c63-1b17388793b0",
+				"method": "POST"
+			},
+			{
+				"id": "d67f7aa3-14d3-43fa-be9d-cbe74d032e54",
+				"method": "GET"
+			},
+			{
+				"id": "882be1ec-cc2c-47a7-be02-38eea61d1e27",
+				"method": "GET"
+			},
+			{
+				"id": "a443b74f-3274-41fa-9f44-27a50fe5d063",
+				"method": "DELETE"
+			},
+			{
+				"id": "7778c867-c5cf-4b70-906c-d7759324e6d1",
+				"method": "DELETE"
+			},
+			{
+				"id": "f05b9cb2-6236-4331-9f5e-2f601883231e",
+				"method": "DELETE"
+			},
+			{
+				"id": "3b9dfb39-6262-4166-aa0c-88af379bdf2a",
+				"method": "DELETE"
+			},
+			{
+				"id": "affab5dd-d9a2-4b71-986b-ba3e08ba4744",
+				"method": "DELETE"
+			}
+		]
+	}
+}
