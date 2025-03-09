@@ -10,7 +10,7 @@ The purpose of this API is an event organizing system.
 
 ### Dev
 
-1. Clone this project and go to the root with `cd ./event-orginizer-rest-api`
+1. Clone this project and go to the root with `cd ./event-orginizer-rest-api/21078541_events_app`
 2. Install dependencies with `npm i`
 3. Run `npm run dev`
 4. Go to `http://localhost:3000`
